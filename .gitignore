@@ -2,6 +2,7 @@
 
 # dependencies
 /node_modules
+/server/node_moduleswq
 
 # testing
 /coverage
