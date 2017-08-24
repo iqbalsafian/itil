@@ -1,4 +1,12 @@
 import express from 'express';
+import isEmpty from 'lodash/isEmpty';
+import Validator from 'validator';
+import knex from 'knex';
+import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
+import User from '../models/user';
+import config from '../config'
+
 import graphqlHTTP from 'express-graphql';
 import { buildSchema } from 'graphql';
 
@@ -10,6 +18,29 @@ router.get('/', (req, res, next) => {
     title: 'Express'
   });
 });
+
+router.get('/api/login', (req, res, next) => {
+  const { email, password } = req.body;
+
+  User.query({where: { email }})
+    .fetch().then(user => {
+      if (user) {
+        if (bcrypt.compareSync(password, user.get('password_digest'))) {
+          const token = jwt.sign({
+            id: user.get('id'),
+            email: user.get('email')
+          }, config.jwtSecret);
+          res.status(200).json({token});
+        } else {
+          res.status(401).json({ errors: { form: 'Invalid credentials' }})
+        }
+      } else {
+        res.status(401).json({ errors: { form: 'Invalid credentials' }})
+      }
+    })
+
+  res.status(200).json({'status': 200})
+})
 
 // router.get('/api', (req, res, next) => {
   var schema = buildSchema(`
@@ -24,7 +55,7 @@ router.get('/', (req, res, next) => {
     }
   }
 
-  router.use('/api', graphqlHTTP({
+  router.use('/graphql', graphqlHTTP({
     schema,
     rootValue: root,
     graphiql: true
