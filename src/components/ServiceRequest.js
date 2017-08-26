@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
-import { Row, Col, Table } from 'antd';
+import { Row, Col, Table, Modal } from 'antd';
 import '../table.css';
 
 class ServiceRequest extends Component {
+  state = {
+    modalVisibility: false
+  }
   render() {
     const columns = [
       { title: 'No', width: '10%', dataIndex: 'no', key: 'no'},
@@ -25,50 +28,44 @@ class ServiceRequest extends Component {
     return(
       <div>
         <Row gutter={16}>
-          <Col span={9} offset={3}>
+          <Col lg={{span:9, offset:3}} sm={{span:24}}>
             <Row>
               <Col span={24} style={{minHeight:'200px'}}>
-                New <br/>
-                {/* <table width="100%" className="fixed_headers">
-                  <thead>
-                    <tr style={{align:'center'}}>
-                      <th width="10%">No</th>
-                      <th width="20%">Name</th>
-                      <th width="20%">Department</th>
-                      <th width="30%">Type</th>
-                      <th width="20%">Elapsed</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                  </tbody>
-                </table> */}
-                <Table columns={columns} dataSource={data} scroll={{x: 200, y: 150}} pagination={false} />
+                <strong>New</strong> <br/>
+                <Table size="small" columns={columns} dataSource={data} scroll={{x: 200, y: 150}} pagination={false}
+                  className="padding-row row-class"
+                  onRowClick={() => { this.setState({modalVisibility: true}); }} />
                 </Col>
             </Row>
             <br/>
             <Row>
               <Col span={24} style={{minHeight:'200px'}}>
-                Cleared <br/>
-                <Table columns={columns} dataSource={data} scroll={{x: 200, y: 150}} pagination={false} />
+                <strong>In Progress</strong> <br/>
+                <Table size="small" columns={columns} dataSource={data} scroll={{x: 200, y: 150}} pagination={false} />
               </Col>
             </Row>
           </Col>
-          <Col span={9}>
+          <Col lg={{span:9}} sm={{span:24}}>
             <Row>
               <Col span={24} style={{minHeight:'200px'}}>
-                Cleared <br/>
-                <Table columns={columns} dataSource={data} scroll={{x: 200, y: 150}} pagination={false} />
+                <strong>Cleared</strong> <br/>
+                <Table size="small" columns={columns} dataSource={data} scroll={{x: 200, y: 150}} pagination={false} />
               </Col>
             </Row>
             <br/>
             <Row>
               <Col span={24} style={{minHeight:'200px'}}>
-                Completed <br/>
-                <Table columns={columns} dataSource={data} scroll={{x: 200, y: 150}} pagination={false} />
+                <strong>Completed</strong> <br/>
+                <Table size="small" columns={columns} dataSource={data} scroll={{x: 200, y: 150}} pagination={false} />
               </Col>
             </Row>
           </Col>
         </Row>
+        <Modal
+           title="Title"visible={this.state.modalVisibility}
+           onCancel={() => { this.setState({modalVisibility: false})}}>
+           Content
+        </Modal>
       </div>
     )
   }

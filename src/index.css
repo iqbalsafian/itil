@@ -14,3 +14,12 @@ body {
   position:fixed;
   text-align: center;
 }
+
+.padding-row {
+  cellPadding: 0;
+  cellSpacing: 0;
+}
+
+.row-class {
+  cursor: pointer;
+}

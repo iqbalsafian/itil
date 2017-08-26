@@ -10,6 +10,8 @@ import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 import { setCurrentUser } from './actions/authentication';
+import { LocaleProvider } from 'antd';
+import enUS from 'antd/lib/locale-provider/en_US';
 
 const store = createStore(
   rootReducer,
@@ -23,6 +25,8 @@ if (localStorage.jwtToken) {
 
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <LocaleProvider locale={enUS}>
+      <App />
+    </LocaleProvider>
   </Provider>, document.getElementById('root'));
 registerServiceWorker();
