@@ -14,7 +14,7 @@ class App extends Component {
     const { isAuthenticated } = this.props.auth;
     const authenticatedUserLinks = (
       <div>
-        <MainPage />
+        <MainPage reRender={() => this.reRender} />
       </div>
     )
     return (

@@ -18,7 +18,6 @@ export function userLoginRequest(userData) {
         const token = response.data.token;
         localStorage.setItem('jwtToken', token);
         // setAuthorization(token);
-        console.log(jwtDecode(token));
         dispatch(setCurrentUser(jwtDecode(token)));
         return {
           retStatus: true,
@@ -31,5 +30,13 @@ export function userLoginRequest(userData) {
           errors: errors.response.data
         }
       })
+  }
+}
+
+export function logout() {
+  return dispatch => {
+    localStorage.removeItem('jwtToken');
+    // setAuthorizationToken(false);
+    dispatch(setCurrentUser({}));
   }
 }
