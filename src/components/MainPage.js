@@ -31,7 +31,9 @@ class MainPage extends Component {
             <TabPane tab="Release" key="5">Content of Tab Pane 3</TabPane>
           </Tabs>
         </Content>
-        <Footer className="centering-text footer" style={{textAlign:'center'}}>Footer</Footer>
+        <Footer className="centering-text footer" style={{textAlign:'center', width: '100%'}}>
+          CopyYour Rights forever!
+        </Footer>
       </div>
     )
   }

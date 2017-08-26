@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Row, Col, Table, Modal } from 'antd';
+import SRDetails from './SRDetails';
 import '../table.css';
 
 class ServiceRequest extends Component {
@@ -62,9 +63,9 @@ class ServiceRequest extends Component {
           </Col>
         </Row>
         <Modal
-           title="Title"visible={this.state.modalVisibility}
+           title="Title" visible={this.state.modalVisibility}
            onCancel={() => { this.setState({modalVisibility: false})}}>
-           Content
+           <SRDetails />
         </Modal>
       </div>
     )
