@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Layout, Row, Col, Tabs } from 'antd';
+import { Layout, Tabs } from 'antd';
 import ServiceRequest from './ServiceRequest'
 const { Header, Footer, Content} = Layout;
 const TabPane = Tabs.TabPane;
@@ -9,8 +9,7 @@ class MainPage extends Component {
   render() {
     return(
       <div>
-        <Header className="centering-text">
-
+        <Header className="centering-text" style={{height:'40px'}}>
         </Header>
         <Content className="centering-text">
           <Tabs defaultActiveKey="1" onChange={this.callback}>
