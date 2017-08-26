@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { Form, Icon, Input, Button, Card } from 'antd';
 import validator from 'validator';
+import { userLoginRequest } from '../actions/authentication';
 
 class LoginPage extends Component {
   state = {
@@ -8,7 +10,14 @@ class LoginPage extends Component {
   }
   handleSubmit = (e) => {
     e.preventDefault();
-    
+    const { email, password } = this.state;
+    this.props.userLoginRequest({email, password})
+      .then(response => {
+        this.reRender()
+      })
+      .catch(errors => {
+        this.setState({errors: errors})
+      })
     // if (validator.isEmail(this.state.email))
     //   this.setState({
     //     errors: {email: 'Email is not well formatted', password: this.state.errors.password}
@@ -18,6 +27,11 @@ class LoginPage extends Component {
     //     errors: {password: 'Password cannot be empty', email: this.state.errors.email}
     //   })
   }
+
+  reRender = () => {
+    this.props.reRender()
+  }
+
   handleChange = (e) => {
     this.setState({ [e.target.name]: e.target.value })
   }
@@ -44,8 +58,9 @@ class LoginPage extends Component {
                 ? <span>{this.state.errors.email}</span>
                 : ''
               }
-              <Input prefix={<Icon type="lock" style={{ fontSize: 13 }} />} type="password" placeholder="Password"
-               onChange={this.handleChange} />
+              <Input prefix={<Icon type="lock" style={{ fontSize: 13 }} />}
+                type="password" placeholder="Password" id="password" name="password"
+                onChange={this.handleChange} />
             </FormItem>
             <FormItem>
               <Button type="primary" htmlType="submit" className="login-form-button">
@@ -59,4 +74,4 @@ class LoginPage extends Component {
   }
 }
 
-export default LoginPage;
+export default connect((state) => { return {}}, { userLoginRequest })(LoginPage);

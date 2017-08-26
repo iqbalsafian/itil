@@ -19,7 +19,7 @@ router.get('/', (req, res, next) => {
   });
 });
 
-router.get('/api/login', (req, res, next) => {
+router.post('/api/login', (req, res, next) => {
   const { email, password } = req.body;
 
   User.query({where: { email }})
@@ -38,8 +38,6 @@ router.get('/api/login', (req, res, next) => {
         res.status(401).json({ errors: { form: 'Invalid credentials' }})
       }
     })
-
-  res.status(200).json({'status': 200})
 })
 
 // router.get('/api', (req, res, next) => {

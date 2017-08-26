@@ -2,7 +2,7 @@ import { SET_CURRENT_USER } from './types';
 import axios from 'axios';
 import jwtDecode from 'jwt-decode';
 
-const backendURL = 'https://localhost:4000';
+const backendURL = 'http://localhost:4000';
 
 export function setCurrentUser(user) {
   return {
@@ -18,6 +18,7 @@ export function userLoginRequest(userData) {
         const token = response.data.token;
         localStorage.setItem('jwtToken', token);
         // setAuthorization(token);
+        console.log(jwtDecode(token));
         dispatch(setCurrentUser(jwtDecode(token)));
         return {
           retStatus: true,
