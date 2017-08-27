@@ -10,58 +10,60 @@ class SRDetails extends Component {
         <Form>
           <Row gutter={16}>
             <Col
+              xs={{span:22, offset: 0}}
               sm={{span:22, offset: 1}}
-              md={{span:11, offset: 0}}>
+              md={{span:11, offset: 1}}>
               <Row gutter={8}>
-                <Col sm={{span:10, offset: 1}} md={{span:10, offset: 1}}>
+                <Col xs={{span:8, offset: 3}} sm={{span:11, offset: 1}} md={{span:11, offset: 1}}>
                   First Name
                 </Col>
-                <Col sm={{span:10, offset: 0}} md={{span:10, offset: 0}}>
+                <Col xs={{span:8}} sm={{span:11, offset: 0}} md={{span:11, offset: 0}}>
                   Actual Name
                 </Col>
               </Row>
               <Row gutter={8}>
-                <Col sm={{span:10, offset: 1}} md={{span:10, offset: 1}}>
+                <Col xs={{span:8, offset: 3}} sm={{span:11, offset: 1}} md={{span:11, offset: 1}}>
                   Last Name
                 </Col>
-                <Col sm={{span:10, offset: 0}} md={{span:10, offset: 0}}>
+                <Col xs={{span:8}} sm={{span:11, offset: 0}} md={{span:11, offset: 0}}>
                   Actual Name
                 </Col>
               </Row>
               <Row gutter={8}>
-                <Col sm={{span:10, offset: 1}} md={{span:10, offset: 1}}>
+                <Col xs={{span:8, offset: 3}} sm={{span:11, offset: 1}} md={{span:11, offset: 1}}>
                   Department
                 </Col>
-                <Col sm={{span:10, offset: 0}} md={{span:10, offset: 0}}>
-                  Actual Name
+                <Col xs={{span:8}} sm={{span:11, offset: 0}} md={{span:11, offset: 0}}>
+                  department
                 </Col>
               </Row>
             </Col>
             <Col
+              xs={{span:22, offset: 0}}
               sm={{span:22, offset: 1}}
-              md={{span:11, offset: 0}}>
+              md={{span:11, offset: 1}}>
               <Row gutter={8}>
-                <Col sm={{span:10, offset: 1}} md={{span:10, offset: 1}}>
+                <Col xs={{span:8, offset: 3}} sm={{span:11, offset: 1}} md={{span:11, offset: 1}}>
                   Email
                 </Col>
-                <Col sm={{span:10, offset: 0}} md={{span:10, offset: 0}}>
-                  @email.com
+                <Col xs={{span:8}} sm={{span:11, offset: 0}} md={{span:11, offset: 0}}>
+                  iam@email.com
                 </Col>
               </Row>
               <Row gutter={8}>
-                <Col sm={{span:10, offset: 1}} md={{span:10, offset: 1}}>
+                <Col xs={{span:8, offset: 3}} sm={{span:11, offset: 1}} md={{span:11, offset: 1}}>
                   Phone No
                 </Col>
-                <Col sm={{span:10, offset: 0}} md={{span:10, offset: 0}}>
-                  324234234
+                <Col xs={{span:8}} sm={{span:11, offset: 0}} md={{span:11, offset: 0}}>
+                  9234329483
                 </Col>
               </Row>
               <Row gutter={8}>
-                <Col sm={{span:10, offset: 1}} md={{span:10, offset: 1}}>
-                  Extension
+                <Col xs={{span:8, offset: 3}} sm={{span:11, offset: 1}} md={{span:11, offset: 1}}>
+                  Extension No
                 </Col>
-                <Col sm={{span:10, offset: 0}} md={{span:10, offset: 0}}>
-                  Tension
+                <Col xs={{span:8}} sm={{span:11, offset: 0}} md={{span:11, offset: 0}}>
+                  3212
                 </Col>
               </Row>
             </Col>
