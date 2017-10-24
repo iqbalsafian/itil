@@ -5,6 +5,24 @@ const TabPane = Tabs.TabPane;
 
 class SRDetails extends Component {
   render() {
+
+    const formItemLayout = {
+      labelCol: {
+        xs: { span: 10},
+        sm: { span: 10}
+      },
+      wrapperCol: {
+        xs: { span: 24 },
+        sm: { span: 14}
+      }
+    }
+
+    const detailsCol = {
+      xs: { span: 12 },
+      sm: { span: 12},
+      md: { span: 12}
+    }
+
     return(
       <div>
         <Form>
@@ -72,9 +90,24 @@ class SRDetails extends Component {
             <Col>
               <Tabs defaultActiveKey="1" onChange="" className="centering-text">
                 <TabPane tab="Incident Details" key="1">
-                  Type of S.R
-                  Description
-                  Remarks
+                    <Row gutter={8}>
+                      <Col {...detailsCol}>
+                        <FormItem label="Occured at" {...formItemLayout}>
+                          <Input value="" />
+                        </FormItem>
+                        <FormItem label="Elapsed" {...formItemLayout} className="form-item">
+                          <Input value="" />
+                        </FormItem>
+                        <FormItem label="Priority" {...formItemLayout}>
+                          <Input value="" />
+                        </FormItem>
+                      </Col>
+                      <Col {...detailsCol}>
+                        <FormItem label="Occurance Time" {...formItemLayout}>
+                          <Input disabled value=""  />
+                        </FormItem>
+                      </Col>
+                    </Row>
                 </TabPane>
                 <TabPane tab="Assignee" key="2">
                   Department: Asignee

@@ -5,9 +5,25 @@ import '../table.css';
 
 class ServiceRequest extends Component {
   state = {
-    modalVisibility: false
+    modalVisibility: false,
+    width: '0',
+    height: '0'
+  }
+
+  componentDidMount() {
+    this.updateWindowDimensions();
+    window.addEventListener('resize', this.updateWindowDimensions);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.updateWindowDimensions);
+  }
+
+  updateWindowDimensions = () => {
+    this.setState({ width: window.innerWidth, height: window.innerHeight });
   }
   render() {
+    const modalSize = (this.state.width > 600) ? 600 : 450;
     const columns = [
       { title: 'No', width: '10%', dataIndex: 'no', key: 'no'},
       { title: 'Name', width: '20%', dataIndex: 'name', key: 'name'},
@@ -64,7 +80,8 @@ class ServiceRequest extends Component {
         </Row>
         <Modal
            title="Title" visible={this.state.modalVisibility}
-           onCancel={() => { this.setState({modalVisibility: false})}}>
+           onCancel={() => { this.setState({modalVisibility: false})}}
+           width={modalSize}>
            <SRDetails />
         </Modal>
       </div>
