@@ -7,7 +7,7 @@ module.exports = {
     connection: {
       database: 'itil',
       user:     'username',
-      password: 'password'
+      password: 'passwod'
     },
     pool: {
       min: 2,
